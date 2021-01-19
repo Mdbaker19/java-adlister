@@ -19,11 +19,14 @@ public class HelloWorldServlet extends HttpServlet {
         // used to write to the http response
         PrintWriter out = res.getWriter();
 
+        String pageContent = "<h1>Hello World From Java!</h1>";
+        pageContent+="<h3>Hello " + query + "</h3>";
+        pageContent+="<a href='/count'>View Current Counter</a>";
+
         // send redirect to redirect to a different location
 
         // hard coded text
-        out.println("<h1>Hello World From Java!</h1>");
-        out.printf("Hello %s", query);
+        out.println(pageContent);
 
 
     }
