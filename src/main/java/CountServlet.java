@@ -13,10 +13,17 @@ public class CountServlet extends HttpServlet {
         res.setContentType("text/html");
         PrintWriter out = res.getWriter();
 
-        counter++;
+        String count = req.getParameter("counter");
+
+        if(count == null){
+            counter++;
+            count = String.valueOf(counter);
+        } else {
+            counter = Integer.parseInt(count);
+        }
 
         String content = "<h1>Will display a counter here</h1>";
-        content+="<p>Current Count : " + counter + " </p>";
+        content+="<p>Current Count : " + count + " </p>";
         content+="<a href='/hello'>Go back to main page</a>";
 
 
