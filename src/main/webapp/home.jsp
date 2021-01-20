@@ -9,9 +9,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%! int pageNum = 1; %>
+<% request.setAttribute("title", "Home page");%>
 <html>
 <head>
-    <title>Home Page Lec JSP</title>
+    <title>${title}</title>
 </head>
 <body>
 

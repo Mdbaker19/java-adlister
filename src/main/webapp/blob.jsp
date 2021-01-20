@@ -12,11 +12,17 @@
 </head>
 <body>
 
-<h1>Welcome Mr. <%= request.getParameter("Username")%></h1>
+<h1>Welcome Mr. <%= request.getParameter("username") %></h1>
+<h1>Welcome Mr. ${param.username}</h1>
 
 <h1>The blob land</h1>
 <p>blobs created : </p>
 <p> blob's info here : </p>
+
+<p>${header}</p>
+<p>${cookie}</p>
+<p>${sessionScope}</p>
+
 
 </body>
 </html>
