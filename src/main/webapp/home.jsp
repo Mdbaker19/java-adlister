@@ -8,8 +8,8 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%! int pageNum = 1; %>
-<% request.setAttribute("title", "Home page");%>
+<%--<%! int pageNum = 1; %>--%>
+<%--<% request.setAttribute("title", "Home page");%>--%>
 <html>
 <head>
     <title>${title}</title>
@@ -20,7 +20,16 @@
 
     <h1>Hello Jupiter!</h1>
 
-    <p><%= pageNum %></p>
+    <c:choose>
+        <c:when test="${isLoggedIn}">
+            <h3>You are logged In</h3>
+        </c:when>
+        <c:otherwise>
+            <h3>You must log in first</h3>
+        </c:otherwise>
+    </c:choose>
+
+    <p> ${number} </p>
 
 <%--    through the action the values used in {name} can then be referenced through the request.get param--%>
     <form action="blob.jsp" method="get">

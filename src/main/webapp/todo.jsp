@@ -8,9 +8,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--set an attribute on the server side--%>
-<% request.setAttribute("isAdmin", false); %>
-<% request.setAttribute("isLoggedIn", false); %>
-<% request.setAttribute("myItems", new String[] {"todo 1", "todo 2", "todo 3"}); %>
+<%--<% request.setAttribute("isAdmin", false); %>--%>
+<%--<% request.setAttribute("myItems", new String[] {"todo 1", "todo 2", "todo 3"}); %>--%>
 
 <html>
 <head>
@@ -38,9 +37,6 @@
         <c:forEach items="${myItems}" var="li" >
             <li>${li}</li>
         </c:forEach>
-        <li>
-            <%=request.getParameter("item")%>
-        </li>
     </ul>
 
 </body>
