@@ -9,11 +9,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<% if(request.getMethod().equals("post")) {
+<% if(request.getMethod().equalsIgnoreCase("post")) {
     String password = request.getParameter("pass");
     String username = request.getParameter("user");
     if(password.equals("password") && username.equals("admin")){
         response.sendRedirect("/profile.jsp");
+    } else {
+        response.sendRedirect("/otherUser.jsp");
     }
 }
 %>
@@ -21,10 +23,12 @@
 <html>
 <head>
     <title>Login</title>
+    <%@include file="partials/head.jsp" %>
 </head>
 <body>
+
     <h1>Log in page</h1>
-    <form action="login.jsp" method="post">
+    <form action="login.jsp" method="POST">
         <label>
             Enter Username
             <input type="text" name="user" id="user">
