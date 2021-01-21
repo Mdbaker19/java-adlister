@@ -16,7 +16,7 @@
     <form action="/guess" method="POST">
         <label>
             Enter a number between 1 and 3
-            <input name="number">
+            <input name="inputNumber">
         </label>
         <button type="submit">Submit</button>
     </form>
