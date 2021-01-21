@@ -17,7 +17,7 @@ public class GuessServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
 
         int guess = Integer.parseInt(req.getParameter("inputNumber"));
-        boolean valid = false;
+        boolean invalid = false;
 
 //        int low = Integer.parseInt(req.getParameter("low"));
 //        System.out.println(low);
@@ -25,7 +25,7 @@ public class GuessServlet extends HttpServlet {
 
 
         if(guess > 3 || guess < 1){
-            valid = true;
+            invalid = true;
         }
 
         if (guess == 2) {
@@ -33,7 +33,7 @@ public class GuessServlet extends HttpServlet {
         } else if (guess == 1 || guess == 3) {
             res.sendRedirect("/wrong");
         } else {
-            req.setAttribute("notValid", valid);
+            req.setAttribute("notValid", invalid);
             req.getRequestDispatcher("/guessing-app/guess.jsp").forward(req, res);
             res.sendRedirect("/guess");
         }
