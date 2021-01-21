@@ -13,9 +13,11 @@
 </head>
 <body>
 
+    <h1>Welcome ${username}</h1>
+
     <form action="/guess" method="POST">
         <label>
-            Enter a number between 1 and 3
+            Enter a number between ${low} and ${high}
             <input name="inputNumber">
         </label>
         <button type="submit">Submit</button>
@@ -23,6 +25,8 @@
     <c:if test="${notValid}">
         <h1>Looks like you entered an invalid number</h1>
     </c:if>
+
+<a href="/guesslogin">Logout</a>
 
 </body>
 </html>

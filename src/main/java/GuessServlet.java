@@ -19,6 +19,11 @@ public class GuessServlet extends HttpServlet {
         int guess = Integer.parseInt(req.getParameter("inputNumber"));
         boolean valid = false;
 
+//        int low = Integer.parseInt(req.getParameter("low"));
+//        System.out.println(low);
+
+
+
         if(guess > 3 || guess < 1){
             valid = true;
         }
