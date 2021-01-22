@@ -9,7 +9,9 @@
     <jsp:include page="partials/navbar.jsp" />
 
     <div class="container">
-        <h1>Viewing your profile.</h1>
+        <h1>Viewing your profile Mr admin.</h1>
+        <h3>If you logged in as admin you are here</h3>
+        <a href="/ads">View your ads</a>
     </div>
 
 </body>
