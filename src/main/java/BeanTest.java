@@ -56,9 +56,14 @@ public class BeanTest {
         quotes.add(first);
         quotes.add(second);
 
+        int count = 0;
         for(Quote q : quotes){
             System.out.println(q.getContent() + " Spoken by famous Author : " + q.getAuthor().getFirstName() + " " + q.getAuthor().getLastName());
+            if(q.getAuthor().getFirstName().equalsIgnoreCase("matt")){
+                count++;
+            }
         }
+        System.out.println(count + " different quotes spoken by Mr. " + me.getFirstName());
 
 
 
