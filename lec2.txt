@@ -19,7 +19,7 @@
   - Create Contacts interface
   - ContactListDao (Contacts implementation) w/o connection
     - Contacts are added manually in Constructor
-  - Refactor DaoFactory to use ContactListDao
+  - Refactor dao.DaoFactory to use ContactListDao
     - Test ContactListDao and test the application
     - Add ContactIndexServlet, ContactViewServlet
   - Create MySQLContactsDao w/Connection (contacts are added with seeder file)
