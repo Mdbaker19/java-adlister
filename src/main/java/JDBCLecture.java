@@ -7,6 +7,9 @@ public class JDBCLecture {
 
         // url connection /localhost/ databaseName
 
+        
+
+
         try {
             DriverManager.registerDriver(new Driver());
 

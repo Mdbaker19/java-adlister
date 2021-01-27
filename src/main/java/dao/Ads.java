@@ -8,4 +8,6 @@ public interface Ads {
     List<Ad> all();
     Long insert(Ad ad);
     Ad getAdById(long id);
+    List<Ad> byUser(int id);
+    int findUserId(String userName);
 }

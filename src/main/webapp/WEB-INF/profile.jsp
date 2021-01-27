@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -11,6 +12,8 @@
     <div class="container">
         <h1>Welcome, ${sessionScope.user}!</h1>
     </div>
+
+    <a href="/yourAds">View Your ads Current user id ${userId}</a>
 
 </body>
 </html>
