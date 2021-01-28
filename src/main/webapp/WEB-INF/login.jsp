@@ -22,6 +22,7 @@
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
         </form>
+        <a href="/register">Register</a>
     </div>
 </body>
 </html>

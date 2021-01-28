@@ -54,8 +54,7 @@ public class LoginServlet extends HttpServlet {
         }
 
         if (validAttempt) {
-            // TODO: store the logged in user object in the session, instead of just the username
-            session.setAttribute("user", username);
+            session.setAttribute("user", currUser);
             response.sendRedirect("/profile");
         } else {
             response.sendRedirect("/login");

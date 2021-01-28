@@ -20,8 +20,6 @@ public class RegisterServlet extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // TODO: if a user was successfully created, send them to their profile
-
         HttpSession session = request.getSession();
 
         session.setAttribute("invalidUn", false);
@@ -55,7 +53,7 @@ public class RegisterServlet extends HttpServlet {
 
         User newUser = DaoFactory.getUsersDao().createUser(newEm, newUN, newP);
         DaoFactory.getUsersDao().insert(newUser);
-        session.setAttribute("user", newUN);
+        session.setAttribute("user", newUser);
         response.sendRedirect("/profile");
 
 
