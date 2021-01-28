@@ -9,6 +9,11 @@
 <body>
 <jsp:include page="/WEB-INF/partials/navbar.jsp" />
 
+<form action="/ads" method="post">
+    <input type="text" id="item" name="item" placeholder="What are you looking for today?">
+    <button>Let's go!</button>
+</form>
+
 <div class="container">
     <h1>Here Are all the ads!</h1>
 
@@ -19,6 +24,8 @@
         </div>
     </c:forEach>
 </div>
+
+
 
 </body>
 </html>

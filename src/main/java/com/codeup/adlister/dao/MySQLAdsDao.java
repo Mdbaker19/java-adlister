@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
+import dao.Config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -52,6 +53,13 @@ public class MySQLAdsDao implements Ads {
     }
 
     private String createInsertQuery(Ad ad) {
+        // "INSERT INTO products(name, category, price) VALUES (?, ?, ?)";
+        // PreparedStatement stmt = connection.prepareStatement(sqlQuery, Statement.RETURN_GENERATED_KEYS);
+        // stmt.setString(1, "hammer");
+        // stmt.setString(2, "tools");
+        // stmt.setFloat(3, 19.99);
+        // stmt.executeUpdate();
+        // ResultSet generatedIdResultSet = stmt.getGeneratedKeys();
         return "INSERT INTO ads(user_id, title, description) VALUES "
             + "(" + ad.getUserId() + ", "
             + "'" + ad.getTitle() +"', "
@@ -74,4 +82,23 @@ public class MySQLAdsDao implements Ads {
         }
         return ads;
     }
+
+    public List<Ad> pretendSearch(String query){
+        PreparedStatement stmt = null;
+        String sqlQuery = "SELECT * FROM ads WHERE title LIKE ?";
+        String userInput = "%" + query + "%";
+        try{
+            stmt = connection.prepareStatement(sqlQuery);
+            stmt.setString(1, userInput);// 1 is the ? index, this case there is only 1 so the 1 takes place of the first ? in the sqlQuery above, insert this value - userInput - there
+
+
+            stmt.executeQuery();
+            ResultSet rs = stmt.getResultSet();
+            return createAdsFromResults(rs);
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error retrieving all ads.", e);
+        }
+    }
+
 }

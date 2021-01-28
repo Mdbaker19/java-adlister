@@ -55,4 +55,8 @@ public class ListAdsDao implements Ads {
         ));
         return ads;
     }
+
+    public List<Ad> pretendSearch(String q){
+        return null;
+    }
 }
