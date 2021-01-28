@@ -2,6 +2,7 @@ package com.codeup.adlister.dao;
 
 import com.codeup.adlister.models.Ad;
 import com.mysql.cj.jdbc.Driver;
+import dao.Config;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -27,6 +28,25 @@ public class MySQLAdsDao implements Ads {
     }
 
     @Override
+    public List<Ad> search(String query){
+        List<Ad> out = new ArrayList<>();
+        String q = "SELECT * FROM ads WHERE title LIKE ?";
+        String userInput = "%"+query+"%";
+        try{
+            PreparedStatement stm = connection.prepareStatement(q);
+            stm.setString(1, userInput);
+            stm.executeQuery();
+            ResultSet rs = stm.getResultSet();
+            out = createAdsFromResults(rs);
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+
+
+        return out;
+    }
+
+    @Override
     public List<Ad> all() {
         Statement stmt = null;
         try {
@@ -40,9 +60,16 @@ public class MySQLAdsDao implements Ads {
 
     @Override
     public Long insert(Ad ad) {
+        String query = "INSERT INTO ads(user_id, title, description) VALUES (?, ?, ?)";
+        String title = ad.getTitle();
+        String desc = ad.getDescription();
         try {
-            Statement stmt = connection.createStatement();
-            stmt.executeUpdate(createInsertQuery(ad), Statement.RETURN_GENERATED_KEYS);
+            PreparedStatement stmt = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            stmt.setLong(1, ad.getUserId());
+            stmt.setString(2, title);
+            stmt.setString(3, desc);
+            System.out.println(stmt);
+            stmt.executeUpdate();
             ResultSet rs = stmt.getGeneratedKeys();
             rs.next();
             return rs.getLong(1);

@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <jsp:include page="/WEB-INF/partials/head.jsp">
@@ -11,11 +13,11 @@
         <h1>Please Log In</h1>
         <form action="/login" method="POST">
             <div class="form-group">
-                <label for="username">Username</label>
+                <label for="username">Username <c:if test="${sessionScope.wrongLoginIfoUserName}"><span class="errorLoggingIn">Invalid Username, try again</span></c:if> </label>
                 <input id="username" name="username" class="form-control" type="text">
             </div>
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Password <c:if test="${wrongLoginPassword}"><span class="errorLoggingIn">Invalid password for Username ${sessionScope.attemptedUserName}</span> </c:if> </label>
                 <input id="password" name="password" class="form-control" type="password">
             </div>
             <input type="submit" class="btn btn-primary btn-block" value="Log In">
