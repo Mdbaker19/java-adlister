@@ -17,11 +17,18 @@
         <div class="col-md-6">
             <c:if test="${sessionScope.user != null}">
                 <c:if test="${ad.userId == sessionScope.userId}">
-                    <button>Delete your ad ${sessionScope.user.username}</button>
+                    <form method="POST" action="/delete">
+                        <button type="submit">Delete your ad</button>
+                        <input type="hidden" value="${ad.id}" name="deleteThisAd" id="deleteThisAd">
+                    </form>
+                    <form method="GET" action="/editForm">
+                        <button type="submit">Edit your ad</button>
+                        <input type="hidden" value="${ad.id}" name="editThisAd" id="editThisAd">
+                    </form>
                 </c:if>
             </c:if>
-            <h2>${ad.title}</h2>
-            <p>${ad.description}</p>
+            <h2><c:out value="${ad.title}"/></h2>
+            <p><c:out value="${ad.description}"/></p>
         </div>
     </c:forEach>
 </div>
