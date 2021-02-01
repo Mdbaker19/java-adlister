@@ -18,7 +18,7 @@
 
     <h1>Here Are all the ads!</h1>
 
-    <h1><c:out value="${searchQ}"/></h1>
+    <h1>Viewing ads for : <c:out value="${searchQ}"/></h1>
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">

@@ -35,7 +35,7 @@ public class MySQLUsersDao implements Users{
             PreparedStatement stm = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             stm.setString(1, username);
             ResultSet rs = stm.executeQuery(); // this is currently null in de bug when de bug set on line 37
-
+            rs.next();
             return createUserObj(rs);
 
         } catch (SQLException e){
@@ -115,7 +115,6 @@ public class MySQLUsersDao implements Users{
     }
 
     private User createUserObj(ResultSet rs) throws SQLException {
-        rs.next();
         return new User(
                 rs.getString("username"),
                 rs.getString("email"),

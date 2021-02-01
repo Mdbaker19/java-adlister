@@ -41,8 +41,6 @@ public class MySQLAdsDao implements Ads {
         } catch (SQLException e){
             e.printStackTrace();
         }
-
-
         return out;
     }
 
