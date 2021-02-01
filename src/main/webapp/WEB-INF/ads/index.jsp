@@ -15,6 +15,11 @@
 
     <c:forEach var="ad" items="${ads}">
         <div class="col-md-6">
+            <c:if test="${sessionScope.user != null}">
+                <c:if test="${ad.userId == sessionScope.userId}">
+                    <button>Delete your ad ${sessionScope.user.username}</button>
+                </c:if>
+            </c:if>
             <h2>${ad.title}</h2>
             <p>${ad.description}</p>
         </div>
